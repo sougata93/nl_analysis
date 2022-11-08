@@ -85,23 +85,23 @@ def table_extract(file,file_path,base_path):
                 
                 data4=data4.drop(columns=0)
                 # data4.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-                Dict={}
-                count=0
-                for row in data4.index:
-                    Dict[count]=str(row)
-                    count=count+1
-                name=base_path+'/NLOps/row/'+'nl_4'+"_row.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for row in data4.index:
+                #     Dict[count]=str(row)
+                #     count=count+1
+                # name=base_path+'/NLOps/row/'+'nl_4'+"_row.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
 
-                Dict={}
-                count=0
-                for col in list(data4.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_4'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data4.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_4'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
 
 
                 return {'NL_4':data4}
@@ -164,23 +164,23 @@ def table_extract(file,file_path,base_path):
                 data5=data5.drop(columns=0)
                 # data5.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-                Dict={}
-                count=0
-                for row in data5.index:
-                    Dict[count]=str(row)
-                    count=count+1
-                name=base_path+'/NLOps/row/'+'nl_5'+"_row.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for row in data5.index:
+                #     Dict[count]=str(row)
+                #     count=count+1
+                # name=base_path+'/NLOps/row/'+'nl_5'+"_row.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
 
-                Dict={}
-                count=0
-                for col in list(data5.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_5'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data5.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_5'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
                 return {'NL_5':data5}
 
         if 'nl_6' in file.lower():
@@ -246,23 +246,23 @@ def table_extract(file,file_path,base_path):
                 data6=data6.drop(columns=0)
                 # data6.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-                Dict={}
-                count=0
-                for row in data6.index:
-                    Dict[count]=str(row)
-                    count=count+1
-                name=base_path+'/NLOps/row/'+'nl_6'+"_row.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for row in data6.index:
+                #     Dict[count]=str(row)
+                #     count=count+1
+                # name=base_path+'/NLOps/row/'+'nl_6'+"_row.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
 
-                Dict={}
-                count=0
-                for col in list(data6.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_6'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data6.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_6'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
                 
                 return {'NL_6':data6}
 
@@ -335,23 +335,23 @@ def table_extract(file,file_path,base_path):
                 data7=data7.drop(columns=1)
                 # data7.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-                Dict={}
-                count=0
-                for row in data7.index:
-                    Dict[count]=str(row)
-                    count=count+1
-                name=base_path+'/NLOps/row/'+'nl_7'+"_row.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for row in data7.index:
+                #     Dict[count]=str(row)
+                #     count=count+1
+                # name=base_path+'/NLOps/row/'+'nl_7'+"_row.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
 
-                Dict={}
-                count=0
-                for col in list(data7.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_7'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data7.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_7'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
 
 
 
@@ -407,14 +407,14 @@ def table_extract(file,file_path,base_path):
                 data=data.drop(columns=0)
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-                Dict={}
-                count=0
-                for col in list(data.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_27'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_27'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
 
 
                 return {'NL_27':data}
@@ -528,14 +528,14 @@ def table_extract(file,file_path,base_path):
                 data=data.drop(columns=0)
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-                Dict={}
-                count=0
-                for col in list(data.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_33'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_33'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
                 return {'NL_33':data}
 
         
@@ -588,14 +588,14 @@ def table_extract(file,file_path,base_path):
                 data=data.drop(columns=1)
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-                Dict={}
-                count=0
-                for col in list(data.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_34'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_34'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
                 return {'NL_34':data}
 
 
@@ -661,14 +661,14 @@ def table_extract(file,file_path,base_path):
                 data=data.drop(columns=0)
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-                Dict={}
-                count=0
-                for col in list(data.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_35'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_35'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
 
 
                 return {'NL_35':data}
@@ -737,14 +737,14 @@ def table_extract(file,file_path,base_path):
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
 
-                Dict={}
-                count=0
-                for col in list(data.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_36'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_36'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
                 return {'NL_36':data}
           
            
@@ -796,14 +796,14 @@ def table_extract(file,file_path,base_path):
                 data=data.drop(columns=0)
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-                Dict={}
-                count=0
-                for col in list(data.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_37A'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_37A'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
 
                 return {'NL_37A':data}
           
@@ -850,14 +850,14 @@ def table_extract(file,file_path,base_path):
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-                Dict={}
-                count=0
-                for col in list(data.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_37B'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_37B'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
                 
 
                 return {'NL_37B':data}
@@ -917,14 +917,14 @@ def table_extract(file,file_path,base_path):
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-                Dict={}
-                count=0
-                for col in list(data.columns):
-                    Dict[count]=str(col)
-                    count=count+1
-                name=base_path+'/NLOps/col/'+'nl_39'+"_col.json"
-                with open(name, "w") as outfile:
-                    json.dump(Dict, outfile)
+                # Dict={}
+                # count=0
+                # for col in list(data.columns):
+                #     Dict[count]=str(col)
+                #     count=count+1
+                # name=base_path+'/NLOps/col/'+'nl_39'+"_col.json"
+                # with open(name, "w") as outfile:
+                #     json.dump(Dict, outfile)
                 return {'NL_39':data}
 
         # if 'nl_47' in file.lower():
