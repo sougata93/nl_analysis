@@ -17,6 +17,7 @@ db = SQLAlchemy(app)
 class company(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100))
+    
     details = db.Column(db.String(50))
     createdAt = db.Column(DateTime, default=datetime.utcnow)
     updatedAt = db.Column(DateTime, default=datetime.utcnow)
