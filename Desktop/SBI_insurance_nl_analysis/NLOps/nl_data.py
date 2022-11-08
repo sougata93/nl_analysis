@@ -84,7 +84,8 @@ def table_extract(file,file_path,base_path):
                             data4['Quarter']='Q4'
                 
                 data4=data4.drop(columns=0)
-                data4.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data4.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_4':data4}
                               
         if 'nl_5' in file.lower():
             file_name=file+'_table_'+str(i)
@@ -142,7 +143,8 @@ def table_extract(file,file_path,base_path):
                             data5['Quarter']='Q4'
                 
                 data5=data5.drop(columns=0)
-                data5.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data5.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_5':data5}
 
         if 'nl_6' in file.lower():
             file_name=file+'_table_'+str(i)
@@ -205,7 +207,8 @@ def table_extract(file,file_path,base_path):
                             data6['Quarter']='Q4'
                 
                 data6=data6.drop(columns=0)
-                data6.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data6.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_6':data6}
 
         if 'nl_7' in file.lower():
             file_name=file+'_table_'+str(i)
@@ -274,9 +277,10 @@ def table_extract(file,file_path,base_path):
                 
                 data7=data7.drop(columns=0)
                 data7=data7.drop(columns=1)
-                data7.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data7.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_7':data7}
 
-        if 'nl_27' in file.lower() and 'q2' in file.lower():
+        if 'nl_27' in file.lower():
             file_name=file+'_table_'+str(i)
             table_frame=tables[i].df
             data=pd.DataFrame(table_frame)
@@ -324,7 +328,8 @@ def table_extract(file,file_path,base_path):
                             data['Quarter']='Q4'
                 
                 data=data.drop(columns=0)
-                data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_27':data}
                             
             if 'table_1' in file_name:
         #              row_count=0
@@ -369,10 +374,11 @@ def table_extract(file,file_path,base_path):
                             data['Quarter']='Q4'
                 
                 data=data.drop(columns=0)
-                data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_27':data}
                             
 
-        if 'nl_33' in file.lower() and 'q2' in file.lower():
+        if 'nl_33' in file.lower():
             file_name=file+'_table_'+str(i)
 
             table_frame=tables[i].df
@@ -432,10 +438,11 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns='Reinsurance/Retrocession Placements')
                 data=data.drop(columns=0)
-                data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_33':data}
 
         
-        if 'nl_34' in file.lower() and 'q2' in file.lower():
+        if 'nl_34' in file.lower():
             file_name=file+'_table_'+str(i)
 
             table_frame=tables[i].df
@@ -482,7 +489,8 @@ def table_extract(file,file_path,base_path):
                 # data=data.drop(columns='Reinsurance/Retrocession Placements')
                 data=data.drop(columns=0)
                 data=data.drop(columns=1)
-                data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_34':data}
 
 
         if 'nl_35' in file.lower() and 'q2' in file.lower():
@@ -545,7 +553,8 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_35':data}
 
         if 'nl_36' in file.lower():
             file_name=file+'_table_'+str(i)
@@ -608,7 +617,8 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_36':data}
           
            
         if 'nl_37' in file.lower():
@@ -657,7 +667,8 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_37A':data}
           
             
             if 'table_1' in file_name:
@@ -701,9 +712,10 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_37B':data}
 
-        if 'nl_39' in file.lower() and 'q2' in file.lower():
+        if 'nl_39' in file.lower():
             file_name=file+'_table_'+str(i)
 
             table_frame=tables[i].df
@@ -757,7 +769,8 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                return {'NL_39':data}
 
         # if 'nl_47' in file.lower():
         #     file_name=file+'_table_'+str(i)
