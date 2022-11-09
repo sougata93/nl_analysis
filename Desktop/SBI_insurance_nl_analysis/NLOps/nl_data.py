@@ -8,6 +8,8 @@ import pandas as pd
 # from NLOps.next_row import row_start
 # from next_row import row_start
 # from tabula import read_pdf  
+# from NLOps.row_col_alter import col_alter,row_alter
+from row_col_alter import col_alter,row_alter
 
 def table_extract(file,file_path,base_path):
 
@@ -85,24 +87,8 @@ def table_extract(file,file_path,base_path):
                 
                 data4=data4.drop(columns=0)
                 # data4.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-                # Dict={}
-                # count=0
-                # for row in data4.index:
-                #     Dict[count]=str(row)
-                #     count=count+1
-                # name=base_path+'/NLOps/row/'+'nl_4'+"_row.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
-
-                # Dict={}
-                # count=0
-                # for col in list(data4.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_4'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
-
+                row_alter(data4,base_path,'nl_4')
+                col_alter(data4,base_path,'nl_4')
 
                 return {'NL_4':data4}
                               
@@ -164,23 +150,8 @@ def table_extract(file,file_path,base_path):
                 data5=data5.drop(columns=0)
                 # data5.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-                # Dict={}
-                # count=0
-                # for row in data5.index:
-                #     Dict[count]=str(row)
-                #     count=count+1
-                # name=base_path+'/NLOps/row/'+'nl_5'+"_row.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
-
-                # Dict={}
-                # count=0
-                # for col in list(data5.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_5'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
+                row_alter(data5,base_path,'nl_5')
+                col_alter(data5,base_path,'nl_5')
                 return {'NL_5':data5}
 
         if 'nl_6' in file.lower():
@@ -244,26 +215,8 @@ def table_extract(file,file_path,base_path):
                             data6['Quarter']='Q4'
                 
                 data6=data6.drop(columns=0)
-                # data6.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-
-                # Dict={}
-                # count=0
-                # for row in data6.index:
-                #     Dict[count]=str(row)
-                #     count=count+1
-                # name=base_path+'/NLOps/row/'+'nl_6'+"_row.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
-
-                # Dict={}
-                # count=0
-                # for col in list(data6.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_6'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
-                
+                row_alter(data6,base_path,'nl_6')
+                col_alter(data6,base_path,'nl_6')
                 return {'NL_6':data6}
 
         if 'nl_7' in file.lower():
@@ -335,25 +288,8 @@ def table_extract(file,file_path,base_path):
                 data7=data7.drop(columns=1)
                 # data7.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-                # Dict={}
-                # count=0
-                # for row in data7.index:
-                #     Dict[count]=str(row)
-                #     count=count+1
-                # name=base_path+'/NLOps/row/'+'nl_7'+"_row.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
-
-                # Dict={}
-                # count=0
-                # for col in list(data7.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_7'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
-
-
+                row_alter(data7,base_path,'nl_7')
+                col_alter(data7,base_path,'nl_7')
 
                 return {'NL_7':data7}
 
@@ -406,15 +342,7 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=0)
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-
-                # Dict={}
-                # count=0
-                # for col in list(data.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_27'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
+                col_alter(data,base_path,'nl_27')
 
 
                 return {'NL_27':data}
@@ -526,16 +454,8 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns='Reinsurance/Retrocession Placements')
                 data=data.drop(columns=0)
-                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-
-                # Dict={}
-                # count=0
-                # for col in list(data.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_33'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
+                row_alter(data,base_path,'nl_33')
+                col_alter(data,base_path,'nl_33')
                 return {'NL_33':data}
 
         
@@ -586,16 +506,8 @@ def table_extract(file,file_path,base_path):
                 # data=data.drop(columns='Reinsurance/Retrocession Placements')
                 data=data.drop(columns=0)
                 data=data.drop(columns=1)
-                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-
-                # Dict={}
-                # count=0
-                # for col in list(data.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_34'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
+                row_alter(data,base_path,'nl_34')
+                col_alter(data,base_path,'nl_34')
                 return {'NL_34':data}
 
 
@@ -659,17 +571,8 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-
-                # Dict={}
-                # count=0
-                # for col in list(data.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_35'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
-
+                row_alter(data,base_path,'nl_35')
+                col_alter(data,base_path,'nl_35')
 
                 return {'NL_35':data}
 
@@ -690,13 +593,17 @@ def table_extract(file,file_path,base_path):
                     for row in data.index:
                         if row==0 and data[col][row]=='':
                             data[col][row]=data[col-1][row]
-
-                
-                
                 for col in list(data.columns):
+
                     for row in data.index:
                         if row==0 and col>1:
-                            data[col][row]=data[col][row]+'_'+data[col][row+1] 
+                            data[col][row]=data[col][row+1]+'_'+data[col][row] 
+
+                
+                data=data.drop(columns=len(data.columns)-1)
+                data=data.drop(columns=len(data.columns)-1)
+                data=data.drop(columns=len(data.columns)-1)
+                data=data.drop(columns=len(data.columns)-1)
 
                 for row in data.index:
                     data.rename(index={row:data[1][row]},inplace = True)
@@ -732,19 +639,12 @@ def table_extract(file,file_path,base_path):
                         if 'q4' in file.lower():
                             data['Quarter']='Q4'
                 
+                
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
 
-
-                # Dict={}
-                # count=0
-                # for col in list(data.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_36'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
+                row_alter(data,base_path,'nl_36')
+                col_alter(data,base_path,'nl_36')
                 return {'NL_36':data}
           
            
@@ -794,16 +694,8 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-
-                # Dict={}
-                # count=0
-                # for col in list(data.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_37A'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
+                row_alter(data,base_path,'nl_37')
+                col_alter(data,base_path,'nl_37')
 
                 return {'NL_37A':data}
           
@@ -916,16 +808,10 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-                # Dict={}
-                # count=0
-                # for col in list(data.columns):
-                #     Dict[count]=str(col)
-                #     count=count+1
-                # name=base_path+'/NLOps/col/'+'nl_39'+"_col.json"
-                # with open(name, "w") as outfile:
-                #     json.dump(Dict, outfile)
+                row_alter(data,base_path,'nl_39')
+                col_alter(data,base_path,'nl_39')
                 return {'NL_39':data}
+
 
         # if 'nl_47' in file.lower():
         #     file_name=file+'_table_'+str(i)
@@ -934,11 +820,11 @@ def table_extract(file,file_path,base_path):
 
 
 
-# f=open('config.json')
-# base_path=json.load(f)['base_path']
-# # savepath=base_path+'/output/raw'
-# file='hdfc_21_22_q2_NL-35-BSNS RETURNS ACROSS LOB .pdf'
-# # # table_extract(file,savepath,base_path)
-# # table_format(file,savepath,base_path)
-# file_path=base_path+'/crawler/hdfc/21_22'
-# table_extract(file,file_path,base_path)
+f=open('config.json')
+base_path=json.load(f)['base_path']
+# savepath=base_path+'/output/raw'
+file='hdfc_21_22_q2_NL-36-CHANNEL WISE PREMIUM .pdf'
+# # table_extract(file,savepath,base_path)
+# table_format(file,savepath,base_path)
+file_path=base_path+'/crawler/hdfc/21_22'
+table_extract(file,file_path,base_path)
