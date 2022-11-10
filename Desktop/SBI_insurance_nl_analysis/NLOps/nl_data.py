@@ -5,13 +5,26 @@ import re
 import math
 import json
 import pandas as pd
+import tabula
+from tabula import read_pdf
+from tabulate import tabulate
+
 # from NLOps.next_row import row_start
 # from next_row import row_start
 # from tabula import read_pdf  
 from NLOps.row_col_alter import col_alter,row_alter
+from NLOps.extraprocess_reliance import relaence_extract
 # from row_col_alter import col_alter,row_alter
 
 def table_extract(file,file_path,base_path):
+
+    if 'reliance' in file:
+       
+#reads table from pdf file
+        df = read_pdf(file_path+"/"+file,pages="all") #address of pdf file
+        print(tabulate(df))
+        # data=relaence_extract(file,file_path,base_path)
+        return df
 
     p=os.path.join(file_path,file)
     tables = camelot.read_pdf(p,pages='all')
@@ -48,7 +61,7 @@ def table_extract(file,file_path,base_path):
 
                 for col in list(data4.columns):
                     for row in data4.index:
-                        if 'hdfc' in file_name:
+                        if 'hdfc' in file_name.lower() or 'tata' in file_name.lower():
                             if row==1 and data4[col][row]=='':
                                 data4[col][row]=data4[col-1][row]
                         else:
@@ -57,7 +70,7 @@ def table_extract(file,file_path,base_path):
 
                 for col in list(data4.columns):
                     for row in data4.index:
-                        if 'hdfc' in file_name:
+                        if 'hdfc' in file_name.lower() or 'tata' in file_name.lower():
                             if row==1 and col>0:
                                 data4[col][row]=data4[col][row]+'_'+data4[col][row+1]
                         else:
@@ -195,7 +208,7 @@ def table_extract(file,file_path,base_path):
 
                 for col in list(data6.columns):
                     for row in data6.index:
-                        if 'hdfc' in file_name.lower():
+                        if 'hdfc' in file_name.lower() or 'tata' in file_name.lower():
                             if row==1 and data6[col][row]=='':
                                 data6[col][row]=data6[col-1][row]
                         else:
@@ -205,7 +218,7 @@ def table_extract(file,file_path,base_path):
                 for col in list(data6.columns):
                     for row in data6.index:
 
-                        if 'hdfc' in file_name.lower():
+                        if 'hdfc' in file_name.lower() or 'tata' in file_name.lower():
 
                             if row==1 and col>0:
                                 data6[col][row]=data6[col][row]+'_'+data6[col][row+1]
@@ -292,7 +305,7 @@ def table_extract(file,file_path,base_path):
 
                 for col in list(data7.columns):
                     for row in data7.index:
-                        if 'hdfc' in file_name:
+                        if 'hdfc' in file_name or 'tata' in file_name.lower():
                             if row==1 and data7[col][row]=='' and col>0:
                                 data7[col][row]=data7[col-1][row]
                         else:
@@ -302,7 +315,7 @@ def table_extract(file,file_path,base_path):
                 
                 for col in list(data7.columns):
                     for row in data7.index:
-                        if 'hdfc' in file_name or 'icici' in file_name:
+                        if 'hdfc' in file_name or 'icici' in file_name or 'tata' in file_name.lower():
                             if row==1 and col>0:
                                 data7[col][row]=data7[col][row]+'_'+data7[col][row+1]  
                         else:
