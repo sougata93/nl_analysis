@@ -1,1 +1,4 @@
-{"0": {"label": "No. of \nPolicies", "name": "No. of \nPolicies", "alternate": []}, "1": {"label": "Premium\n(\n in Lakhs)", "name": "Premium\n(\n in Lakhs)", "alternate": []}, "2": {"label": "Company", "name": "Company", "alternate": []}, "3": {"label": "Year", "name": "Year", "alternate": []}, "4": {"label": "Quarter", "name": "Quarter", "alternate": []}}
+{"0": {"label": "No. of \nPolicies", "name": "No. of \nPolicies", "alternate": []}, 
+"1": {"label": "Premium( in Lakhs)", "name": "Premium(in Lakhs)", "alternate": ["Premium(Rs.Lakhs)"]}, 
+"2": {"label": "Company", "name": "Company", "alternate": []}, 
+"3": {"label": "Year", "name": "Year", "alternate": []}, "4": {"label": "Quarter", "name": "Quarter", "alternate": []}}

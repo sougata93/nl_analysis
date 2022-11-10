@@ -18,7 +18,6 @@ def bajaj_pdf_parse(Q,FY):
 
 def tata_pdf_parse(Q,FY):
     file_path=base_path+'/crawler/tataAig'
-
     NL={}
     for file in os.listdir(file_path):
 
@@ -52,19 +51,30 @@ def sbi_pdf_parse(Q,FY):
 def icici_pdf_parse(Q,FY):
     file_path=base_path+'/crawler/icici/'+FY
     NL={}
+    print('hi')
     for file in os.listdir(file_path):
+        print(file)
 
         if Q in file.lower():
+           
             nl_data=table_extract(file,file_path,base_path)
             if nl_data!=None:
                 NL.update(nl_data)
     return NL
 
-def run():
-    # bajaj_pdf_parse()
-    # tata_pdf_parse()
-    nl=hdfc_pdf_parse()
-    # sbi_pdf_parse()
-    # icici_pdf_parse()
+def run(Q,FY):
+    if Q==None:
+        Q=['q1','q2','q3','q4']
+    # nl=bajaj_pdf_parse(Q,FY)
+    # for key,data in nl.items():
+    #     print(key)
+    #     data.to_excel(base_path+"/output"+"/bajaj_q2/"+'bajaj_'+key+'.xlsx')
+    tata_pdf_parse(Q,FY)
+    # nl=hdfc_pdf_parse(Q,FY)
+    # for key,data in nl.items():
+    #     print(key)
+    #     data.to_excel(base_path+"/output"+"/hdfc_q2/"+'hdfc_'+key+'.xlsx')
+    # sbi_pdf_parse(Q,FY)
+    icici_pdf_parse(Q,FY)
 
-run()
+run('q1','21_22')

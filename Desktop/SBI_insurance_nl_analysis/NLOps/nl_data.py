@@ -8,8 +8,8 @@ import pandas as pd
 # from NLOps.next_row import row_start
 # from next_row import row_start
 # from tabula import read_pdf  
-# from NLOps.row_col_alter import col_alter,row_alter
-from row_col_alter import col_alter,row_alter
+from NLOps.row_col_alter import col_alter,row_alter
+# from row_col_alter import col_alter,row_alter
 
 def table_extract(file,file_path,base_path):
 
@@ -537,12 +537,21 @@ def table_extract(file,file_path,base_path):
                 if 'tata' in file_name:
                     data[1][1]='State / Union Territory'
 
-                for row in data.index:
-                    data.rename(index={row:data[1][row]},inplace = True)
 
-                # for col in list(data4.columns):
-                #     if data4[col]['Particulars']=='':
-                #             data4[col]['Particulars']=data4[col-1]['Particulars']
+
+                if 'tata' in file_name:
+                    for col in list(data.columns):
+                        if col>1:
+                            if data[col][1]=='':
+                                data[col][1]=data[col-1][1]
+                  
+                    for col in list(data.columns):
+                            if col>1:
+                                data[col][1]=str(data[col][1])+'_'+str(data[col][2])
+
+                for row in data.index:
+                    data.rename(index={row:data[1][row]},inplace = True)       
+                
                 for col in list(data.columns):
                     if col>1:
                         data.rename(columns = {col:data[col]['State / Union Territory']}, inplace = True)
@@ -618,7 +627,8 @@ def table_extract(file,file_path,base_path):
                 row_alter(data,base_path,'nl_34',company)
                 col_alter(data,base_path,'nl_34',company)
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-            dats_m=data1.merge(data)
+            dats_m=pd.merge(data, data1, left_index=True, right_index=True)
+            data.to_excel(base_path+'/output/formatted/'+file_name+'.xlsx')
             
             return {'NL_34':dats_m}
 
@@ -935,11 +945,11 @@ def table_extract(file,file_path,base_path):
 
 
 
-f=open('config.json')
-base_path=json.load(f)['base_path']
-# savepath=base_path+'/output/raw'
-file='tata_2022-23Q1 2022-23 NL 34 Geographical Distribution of Business.pdf'
-# # table_extract(file,savepath,base_path)
-# table_format(file,savepath,base_path)
-file_path=base_path+'/crawler/tataAig'
-table_extract(file,file_path,base_path)
+# f=open('config.json')
+# base_path=json.load(f)['base_path']
+# # savepath=base_path+'/output/raw'
+# file='tata_2022-23Q1 2022-23 NL 34 Geographical Distribution of Business.pdf'
+# # # table_extract(file,savepath,base_path)
+# # table_format(file,savepath,base_path)
+# file_path=base_path+'/crawler/tataAig'
+# table_extract(file,file_path,base_path)
