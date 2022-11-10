@@ -22,6 +22,8 @@ def table_extract(file,file_path,base_path):
     data_row_start=None
     data_col_start=None
     fl=65
+    data=pd.DataFrame()
+    data1=pd.DataFrame()
 
     for i in range(0,len(tables)):
 
@@ -39,15 +41,29 @@ def table_extract(file,file_path,base_path):
                 row_count=0
                 col_count=0
 
-                for col in list(data4.columns):
-                    for row in data4.index:
-                        if row==1 and data4[col][row]=='':
-                            data4[col][row]=data4[col-1][row]
+                if 'hdfc' in file_name.lower():
+                    data4=data4.drop(index=0)
+
+
 
                 for col in list(data4.columns):
                     for row in data4.index:
-                        if row==1 and col>0:
-                            data4[col][row]=data4[col][row]+'_'+data4[col][row+1]    
+                        if 'hdfc' in file_name:
+                            if row==1 and data4[col][row]=='':
+                                data4[col][row]=data4[col-1][row]
+                        else:
+                            if row==0 and data4[col][row]=='':
+                                data4[col][row]=data4[col-1][row]
+
+                for col in list(data4.columns):
+                    for row in data4.index:
+                        if 'hdfc' in file_name:
+                            if row==1 and col>0:
+                                data4[col][row]=data4[col][row]+'_'+data4[col][row+1]
+                        else:
+                            if row==0 and col>0:
+                                data4[col][row]=data4[col][row]+'_'+data4[col][row+1]
+
 
                 for row in data4.index:
                     data4.rename(index={row:data4[0][row]},inplace = True)
@@ -75,7 +91,7 @@ def table_extract(file,file_path,base_path):
                 for row in data4.index:
                     if row_count>=1:
                         data4['Company']=file_name.split('_')[0]
-                        data4['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data4['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data4['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -87,8 +103,9 @@ def table_extract(file,file_path,base_path):
                 
                 data4=data4.drop(columns=0)
                 # data4.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-                row_alter(data4,base_path,'nl_4')
-                col_alter(data4,base_path,'nl_4')
+                company=file_name.split('_')[0]
+                row_alter(data4,base_path,'nl_4',company)
+                col_alter(data4,base_path,'nl_4',company)
 
                 return {'NL_4':data4}
                               
@@ -103,13 +120,22 @@ def table_extract(file,file_path,base_path):
                 
                 for col in list(data5.columns):
                     for row in data5.index:
-                        if row==0 and data5[col][row]=='':
-                            data5[col][row]=data5[col-1][row]
+                        if 'hdfc' in file_name:
+                            if row==0 and data5[col][row]=='':
+                                data5[col][row]=data5[col-1][row]
+                        else:
+                            if row==0 and data5[col][row]=='':
+                                data5[col][row]=data5[col-1][row]
+
 
                 for col in list(data5.columns):
                     for row in data5.index:
-                        if row==0 and col>0:
-                            data5[col][row]=data5[col][row]+'_'+data5[col][row+1]  
+                        if 'hdfc' in file_name:
+                            if row==0 and col>0:
+                                data5[col][row]=data5[col][row]+'_'+data5[col][row+1] 
+                        else:
+                            if row==0 and col>0:
+                                data5[col][row]=data5[col][row]+'_'+data5[col][row+1]  
 
                 for row in data5.index:
                     data5.rename(index={row:data5[0][row]},inplace = True)
@@ -137,7 +163,7 @@ def table_extract(file,file_path,base_path):
                 for row in data5.index:
                     if row_count>=1:
                         data5['Company']=file_name.split('_')[0]
-                        data5['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data5['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data5['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -149,9 +175,9 @@ def table_extract(file,file_path,base_path):
                 
                 data5=data5.drop(columns=0)
                 # data5.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-
-                row_alter(data5,base_path,'nl_5')
-                col_alter(data5,base_path,'nl_5')
+                company=file_name.split('_')[0]
+                row_alter(data5,base_path,'nl_5',company)
+                col_alter(data5,base_path,'nl_5',company)
                 return {'NL_5':data5}
 
         if 'nl_6' in file.lower():
@@ -164,16 +190,29 @@ def table_extract(file,file_path,base_path):
                 row_count=0
                 col_count=0
 
+                if 'hdfc' in file_name.lower():
+                    data6.drop(index=0)
+
                 for col in list(data6.columns):
                     for row in data6.index:
-                        if row==1 and data6[col][row]=='':
-                            data6[col][row]=data6[col-1][row]
+                        if 'hdfc' in file_name.lower():
+                            if row==1 and data6[col][row]=='':
+                                data6[col][row]=data6[col-1][row]
+                        else:
+                            if row==0 and data6[col][row]=='':
+                                data6[col][row]=data6[col-1][row]
  
                 for col in list(data6.columns):
                     for row in data6.index:
 
-                        if row==1 and col>0:
-                            data6[col][row]=data6[col][row]+'_'+data6[col][row+1]  
+                        if 'hdfc' in file_name.lower():
+
+                            if row==1 and col>0:
+                                data6[col][row]=data6[col][row]+'_'+data6[col][row+1]
+                        else:
+                            if row==0 and col>0:
+                                data6[col][row]=data6[col][row]+'_'+data6[col][row+1]
+                              
 
 
                 for row in data6.index:
@@ -204,7 +243,7 @@ def table_extract(file,file_path,base_path):
                         flag=1
                     if flag==1:
                         data6['Company']=file_name.split('_')[0]
-                        data6['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data6['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data6['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -215,8 +254,9 @@ def table_extract(file,file_path,base_path):
                             data6['Quarter']='Q4'
                 
                 data6=data6.drop(columns=0)
-                row_alter(data6,base_path,'nl_6')
-                col_alter(data6,base_path,'nl_6')
+                company=file_name.split('_')[0]
+                row_alter(data6,base_path,'nl_6',company)
+                col_alter(data6,base_path,'nl_6',company)
                 return {'NL_6':data6}
 
         if 'nl_7' in file.lower():
@@ -224,27 +264,50 @@ def table_extract(file,file_path,base_path):
 
             table_frame=tables[i].df
             data7=pd.DataFrame(table_frame)
+            tab=''
+            if 'icici' in file_name:
+                tab='table_3'
+            else:
+                tab='table_0'
 
-            if 'table_0' in file_name:
+            if tab in file_name:
                 row_count=0
                 col_count=0
 
+                if 'hdfc' in file_name.lower():
+                    data7.drop(index=0)
+                if 'icici' in file_name:
+                    for col in list(data7.columns):
+                        if col>0:
+                            if data7[col][1]=='' and data7[col][0]!='':
+                                 data7[col][1]=data7[col][0]
+
+
+                
+
                 for row in data7.index:
-                    if data7[0][row]=='':
-                        data7[0][row]=data7[1][row]
+                        if data7[0][row]=='':
+                            data7[0][row]=data7[1][row]
 
 
                 for col in list(data7.columns):
                     for row in data7.index:
-                        if row==1 and data7[col][row]=='':
-                            data7[col][row]=data7[col-1][row]
+                        if 'hdfc' in file_name:
+                            if row==1 and data7[col][row]=='' and col>0:
+                                data7[col][row]=data7[col-1][row]
+                        else:
+                            if row==0 and data7[col][row]=='' and col>0:
+                                data7[col][row]=data7[col-1][row]
 
                 
                 for col in list(data7.columns):
                     for row in data7.index:
-
-                        if row==1 and col>0:
-                            data7[col][row]=data7[col][row]+'_'+data7[col][row+1]  
+                        if 'hdfc' in file_name or 'icici' in file_name:
+                            if row==1 and col>0:
+                                data7[col][row]=data7[col][row]+'_'+data7[col][row+1]  
+                        else:
+                            if row==0 and col>0:
+                                data7[col][row]=data7[col][row]+'_'+data7[col][row+1]
 
                 for row in data7.index:
                     data7.rename(index={row:data7[0][row]},inplace = True)
@@ -274,7 +337,7 @@ def table_extract(file,file_path,base_path):
                         flag=1
                     if flag==1:
                         data7['Company']=file_name.split('_')[0]
-                        data7['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data7['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data7['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -287,9 +350,9 @@ def table_extract(file,file_path,base_path):
                 data7=data7.drop(columns=0)
                 data7=data7.drop(columns=1)
                 # data7.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-
-                row_alter(data7,base_path,'nl_7')
-                col_alter(data7,base_path,'nl_7')
+                company=file_name.split('_')[0]
+                row_alter(data7,base_path,'nl_7',company)
+                col_alter(data7,base_path,'nl_7',company)
 
                 return {'NL_7':data7}
 
@@ -330,7 +393,7 @@ def table_extract(file,file_path,base_path):
                         flag=1
                     if flag==1:
                         data['Company']=file_name.split('_')[0]
-                        data['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -342,7 +405,8 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=0)
                 # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
-                col_alter(data,base_path,'nl_27')
+                company=file_name.split('_')[0]
+                col_alter(data,base_path,'nl_27',company)
 
 
                 return {'NL_27':data}
@@ -379,7 +443,7 @@ def table_extract(file,file_path,base_path):
                         flag=1
                     if flag==1:
                         data['Company']=file_name.split('_')[0]
-                        data['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -442,7 +506,7 @@ def table_extract(file,file_path,base_path):
                         print('a')
                     if flag==1:
                         data['Company']=file_name.split('_')[0]
-                        data['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -454,8 +518,9 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns='Reinsurance/Retrocession Placements')
                 data=data.drop(columns=0)
-                row_alter(data,base_path,'nl_33')
-                col_alter(data,base_path,'nl_33')
+                company=file_name.split('_')[0]
+                row_alter(data,base_path,'nl_33',company)
+                col_alter(data,base_path,'nl_33',company)
                 return {'NL_33':data}
 
         
@@ -463,10 +528,14 @@ def table_extract(file,file_path,base_path):
             file_name=file+'_table_'+str(i)
 
             table_frame=tables[i].df
-            data=pd.DataFrame(table_frame)
+            
             if 'table_0' in file_name:
+                data=pd.DataFrame(table_frame)
                 row_count=0
                 col_count=0
+                
+                if 'tata' in file_name:
+                    data[1][1]='State / Union Territory'
 
                 for row in data.index:
                     data.rename(index={row:data[1][row]},inplace = True)
@@ -493,7 +562,7 @@ def table_extract(file,file_path,base_path):
                         print('a')
                     if flag==1:
                         data['Company']=file_name.split('_')[0]
-                        data['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -506,10 +575,52 @@ def table_extract(file,file_path,base_path):
                 # data=data.drop(columns='Reinsurance/Retrocession Placements')
                 data=data.drop(columns=0)
                 data=data.drop(columns=1)
-                row_alter(data,base_path,'nl_34')
-                col_alter(data,base_path,'nl_34')
-                return {'NL_34':data}
+                company=file_name.split('_')[0]
+                row_alter(data,base_path,'nl_34',company)
+                col_alter(data,base_path,'nl_34',company)
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+                
+            if 'table_1' in file_name and 'tata' in file_name.lower():
+                data1=pd.DataFrame(table_frame)
+                if 'tata' in file_name:
+                    data1[1][1]='State / Union Territory'
 
+                for row in data1.index:
+                    data1.rename(index={row:data1[1][row]},inplace = True)
+
+                # for col in list(data4.columns):
+                #     if data4[col]['Particulars']=='':
+                #             data4[col]['Particulars']=data4[col-1]['Particulars']
+                for col in list(data1.columns):
+                    if col>1:
+                        data1.rename(columns = {col:data1[col]['State / Union Territory']}, inplace = True)                 
+                flag=0
+                for row in data1.index:
+                    if 'Andhra Pradesh' in str(row):
+                        flag=1
+                        print('a')
+                    if flag==1:
+                        data1['Company']=file_name.split('_')[0]
+                        data1['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
+                        if 'q1' in file.lower():
+                            data1['Quarter']='Q1'
+                        if 'q2' in file.lower():
+                            data1['Quarter']='Q2'
+                        if 'q3' in file.lower():
+                            data1['Quarter']='Q3'
+                        if 'q4' in file.lower():
+                            data1['Quarter']='Q4'
+                
+                # data=data.drop(columns='Reinsurance/Retrocession Placements')
+                data1=data1.drop(columns=0)
+                data1=data1.drop(columns=1)
+                company=file_name.split('_')[0]
+                row_alter(data,base_path,'nl_34',company)
+                col_alter(data,base_path,'nl_34',company)
+                # data.to_excel(base_path+"/output"+"/final/"+file_name+'.xlsx')
+            dats_m=data1.merge(data)
+            
+            return {'NL_34':dats_m}
 
         if 'nl_35' in file.lower() and 'q2' in file.lower():
             file_name=file+'_table_'+str(i)
@@ -559,7 +670,7 @@ def table_extract(file,file_path,base_path):
                         flag=1
                     if flag==1:
                         data['Company']=file_name.split('_')[0]
-                        data['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -571,8 +682,9 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                row_alter(data,base_path,'nl_35')
-                col_alter(data,base_path,'nl_35')
+                company=file_name.split('_')[0]
+                row_alter(data,base_path,'nl_35',company)
+                col_alter(data,base_path,'nl_35',company)
 
                 return {'NL_35':data}
 
@@ -629,7 +741,7 @@ def table_extract(file,file_path,base_path):
                         flag=1
                     if flag==1:
                         data['Company']=file_name.split('_')[0]
-                        data['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -642,9 +754,10 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
+                company=file_name.split('_')[0]
 
-                row_alter(data,base_path,'nl_36')
-                col_alter(data,base_path,'nl_36')
+                row_alter(data,base_path,'nl_36',company)
+                col_alter(data,base_path,'nl_36',company)
                 return {'NL_36':data}
           
            
@@ -682,7 +795,7 @@ def table_extract(file,file_path,base_path):
                     if flag==1:
                         data['Company']=file_name.split('_')[0]
                         data['NL Name']='NL 37A'
-                        data['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -694,8 +807,9 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                row_alter(data,base_path,'nl_37')
-                col_alter(data,base_path,'nl_37')
+                company=file_name.split('_')[0]
+                row_alter(data,base_path,'nl_37',company)
+                col_alter(data,base_path,'nl_37',company)
 
                 return {'NL_37A':data}
           
@@ -729,7 +843,7 @@ def table_extract(file,file_path,base_path):
                     if flag==1:
                         data['Company']=file_name.split('_')[0]
                         data['NL Name']='NL 37B'
-                        data['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -796,7 +910,7 @@ def table_extract(file,file_path,base_path):
                         flag=1
                     if flag==1:
                         data['Company']=file_name.split('_')[0]
-                        data['Year']=re.findall(r'\d\d_\d\d',file_name)[0]
+                        data['Year']=re.findall(r'\d\d_\d\d|\d\d\d\d',file_name)[0]
                         if 'q1' in file.lower():
                             data['Quarter']='Q1'
                         if 'q2' in file.lower():
@@ -808,8 +922,9 @@ def table_extract(file,file_path,base_path):
                 
                 data=data.drop(columns=1)
                 data=data.drop(columns=0)
-                row_alter(data,base_path,'nl_39')
-                col_alter(data,base_path,'nl_39')
+                company=file_name.split('_')[0]
+                row_alter(data,base_path,'nl_39',company)
+                col_alter(data,base_path,'nl_39',company)
                 return {'NL_39':data}
 
 
@@ -823,8 +938,8 @@ def table_extract(file,file_path,base_path):
 f=open('config.json')
 base_path=json.load(f)['base_path']
 # savepath=base_path+'/output/raw'
-file='hdfc_21_22_q2_NL-36-CHANNEL WISE PREMIUM .pdf'
+file='tata_2022-23Q1 2022-23 NL 34 Geographical Distribution of Business.pdf'
 # # table_extract(file,savepath,base_path)
 # table_format(file,savepath,base_path)
-file_path=base_path+'/crawler/hdfc/21_22'
+file_path=base_path+'/crawler/tataAig'
 table_extract(file,file_path,base_path)
