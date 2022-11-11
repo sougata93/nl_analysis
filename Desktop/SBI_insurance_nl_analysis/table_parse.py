@@ -83,12 +83,12 @@ def run(Q,FY):
     #     print(key)
     #     data.to_excel(base_path+"/output"+"/bajaj_q2/"+'bajaj_'+key+'.xlsx')
     # tata_pdf_parse(Q,FY)
-    # nl=hdfc_pdf_parse(Q,FY)
+    nl=hdfc_pdf_parse(Q,FY)
     # for key,data in nl.items():
     #     print(key)
     #     data.to_excel(base_path+"/output"+"/hdfc_q2/"+'hdfc_'+key+'.xlsx')
-    sbi_pdf_parse(Q,FY)
+    # sbi_pdf_parse(Q,FY)
     # icici_pdf_parse(Q,FY)
     # reliance_pdf_parse()
 
-run('q1','21_22')
+run('q2','21_22')

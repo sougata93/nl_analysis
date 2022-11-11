@@ -2,6 +2,7 @@ import json
 import os
 from openpyxl import Workbook
 from openpyxl import load_workbook
+import re
 
 all_nl_rows={}
 all_nl_cols={}
@@ -25,8 +26,8 @@ def col_alter(data,base_path,nl,company):
         Dict.append(col)
 
     
-    sheet.append(Dict)
-    workbook.save('C:/Users/souga/Desktop/SBI_insurance_nl_analysis'+"/output/"+"all_nl.xlsx")
+    # sheet.append(Dict)
+    # workbook.save('C:/Users/souga/Desktop/SBI_insurance_nl_analysis'+"/output/"+"all_nl.xlsx")
     # name=base_path+'/NLOps/col/'+nl+"_col.json"
     # with open(name, "w") as outfile:
     #     json.dump(Dict, outfile)
@@ -36,9 +37,13 @@ def row_alter(data,base_path,nl,company):
     Dict={}
     count=0
     for row in data.index:
-        Dict[count]=str(row)
+        if str(row)=='' or 'lakhs' in str(row).lower():
+            continue
+        if '\n' in str(row):
+            row=re.sub('\n','',str(row))
+        Dict[count]={'label':str(row),'name':str(row),'alternate':[]}
         count=count+1
-        # name=base_path+'/NLOps/row/'+nl+"_row.json"
-        # with open(name, "w") as outfile:
-        #     json.dump(Dict, outfile)
+        name=base_path+'/NLOps/row/'+nl+"_row.json"
+        with open(name, "w") as outfile:
+            json.dump(Dict, outfile)
     # all_nl_cols[nl+'_'+company]=Dict

@@ -21,6 +21,12 @@ def FY_22_23(Q):
     for x in res_n[0].xpath("//div[@class='sfContentBlock']//div[@id='2022-2023']//div[@class='public-disclosure marB25']"):
 
         text= x.css('h5::text')[0].extract()
+        if text=='Q1 2022':
+            continue
+        if text=='H1 2022 - Annexure IV':
+            text='Q2 2022'
+        if text=='FY 2022 - Annexure IV':
+            text='Q4 2022'
         print(text)
         count=0
         if re.search(Q,text):
@@ -56,6 +62,12 @@ def FY_21_22(Q):
 
         text= x.css('h5::text')[0].extract()
         print(text)
+        if text=='Q1 2022':
+            continue
+        if text=='H1 2022 - Annexure IV':
+            text='Q2 2022'
+        if text=='FY 2022 - Annexure IV':
+            text='Q4 2022'
         count=0
         if re.search(Q,text):
             for tabRow in x.xpath(".//div[@class='table-container']//tbody//tr"):
@@ -81,6 +93,10 @@ def FY_21_22(Q):
                         
                         print(path)
 
+                        if "\n" in tableText:
+                            print('error')
+                            tableText=re.sub('\n','',tableText)
+
                         p=os.path.join('21_22', "icici_"+text+'_'+tableText+".pdf")
                         open(p, 'wb').write(data.content)
 
@@ -92,4 +108,4 @@ FY_21_22('Q1')
 FY_21_22('Q2')
 FY_21_22('Q3')
 FY_21_22('Q4')
-FY_22_23('Q1')
+# FY_22_23('Q1')
